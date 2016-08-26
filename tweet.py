@@ -9,19 +9,23 @@ def getRecentConnections():
     MBPList = []
     iP6List = []
     iP5sList = []
+    iPMList = []
     for line in FILE:
         if ('Initiated' in line):
             if ('Logans-MBP' in line):
                 MBPList.append(line)
 	    elif ('Logans-iPhone6' in line):
 		iP6List.append(line)
-	    else:
+	    elif ('Logans-iPhone5s' in line):
 		iP5sList.append(line)
+	    else:
+		iPMList.append(line)
     
     finalList = []
     finalList.append(MBPList[-1:])
     finalList.append(iP6List[-1:])
     finalList.append(iP5sList[-1:])
+    finalList.append(iPMList[-1:])
 
     stringList = []
 
@@ -72,7 +76,7 @@ DISK_total = DISK_stats[0]
 DISK_free = DISK_stats[1]
 DISK_perc = DISK_stats[3]
 
-tweetStr = 'All systems are up and running.' + '\n\nRecent Connections:\n' + '- ' + recent_connections[0] + '- ' + recent_connections[1] + '- ' + recent_connections[2] + '\n\nSystem Statistics:\n- CPU Temperature: ' + CPU_temp + 'F' + ' \n- CPU Usage: ' + CPU_usage + '%' + '\n- Total RAM: ' + str(RAM_total) + 'M' + '\n- Used RAM: ' + str(RAM_used) + 'M' + '\n- Free RAM: ' + str(RAM_free) + 'M' + '\n- Total Disk Space: ' + str(DISK_total) + '\n- Free Disk Space: ' + str(DISK_free) + '\n- Percentage of Disk Spaced Used: ' + str(DISK_perc)
+tweetStr = 'All systems are up and running.' + '\n\nRecent Connections:\n' + '- ' + recent_connections[0] + '- ' + recent_connections[1] + '- ' + recent_connections[2] + '- ' + recent_connections[3] + '\n\nSystem Statistics:\n- CPU Temperature: ' + CPU_temp + 'F' + ' \n- CPU Usage: ' + CPU_usage + '%' + '\n- Total RAM: ' + str(RAM_total) + 'M' + '\n- Used RAM: ' + str(RAM_used) + 'M' + '\n- Free RAM: ' + str(RAM_free) + 'M' + '\n- Total Disk Space: ' + str(DISK_total) + '\n- Free Disk Space: ' + str(DISK_free) + '\n- Percentage of Disk Spaced Used: ' + str(DISK_perc)
 
 apiKey = ''
 apiSecret = ''
